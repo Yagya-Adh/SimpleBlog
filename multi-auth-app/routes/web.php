@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
-
+Route::get('post', [HomeController::class, 'post'])->middleware(['auth', 'admin']);
 
 
 
