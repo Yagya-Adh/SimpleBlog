@@ -2,6 +2,10 @@
 <html>
   <head> 
 
+    {{-- Sweet Alert CDN --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
     <style  type="text/css">
     
     .title-deg{
@@ -86,7 +90,15 @@
                         </td>
 
                         <td>
-                            <a href="{{url('delete_post',$post->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure to Delete This?')">Delete</a>
+                            <a 
+                                href="{{url('delete_post',$post->id)}}"
+                                 class="btn btn-danger"
+                                 {{-- onclick="return confirm('Are you sure to Delete This?')" --}}
+
+                                 onclick="confirmation(event)"
+                            >
+                                Delete
+                            </a>
                         </td>
                     </tr>
                     @endforeach
@@ -98,4 +110,37 @@
         {{-- footer --}}
       @include('admin.footer')
   </body>
+
+
+
+  <script type="text/javascript">
+
+    function confirmation(ev){
+
+        ev.preventDefault();
+
+        var urlToRedirect = ev.currentTarget.getAttribute('href');
+
+        console.log(urlToRedirect);
+
+        swal({
+            title:"Are you sure to delete this ?", 
+            text:"You won't be able to revert this delete",
+            icon:"warning",
+            buttons:true,
+            dangerMode:true,
+        })
+        .then((willCancel)=>{
+         
+            if(willCancel){
+
+                window.location.href= urlToRedirect;
+
+            }
+        });
+    }
+  </script>
+
+
+
 </html>
