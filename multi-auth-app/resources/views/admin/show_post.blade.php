@@ -47,6 +47,18 @@
       
 
             <div class="page-content">
+
+                @if(session()->has('message'))
+
+                <div class="alert alert-danger">
+
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+
+                {{session()->get('message')}}
+
+                </div>
+
+                @endif
                 
                 <div class="title-deg">All Post</div>
 
@@ -59,6 +71,7 @@
                         <th>Post Status</th>
                         <th>UserType</th>
                         <th>Image</th>
+                        <th>Delete</th>
                     </tr>
            
                     @foreach ($post as $post)
@@ -70,6 +83,10 @@
                         <td>{{$post->usertype}}</td>
                         <td>
                             <img class="img_deg" src="postimage/{{$post->image}}" alt="">
+                        </td>
+
+                        <td>
+                            <a href="{{url('delete_post',$post->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure to Delete This?')">Delete</a>
                         </td>
                     </tr>
                     @endforeach
