@@ -46,6 +46,7 @@
 
 
                      <li><a href="{{url('create_post')}}">Create Post</a></li>
+                     <li><a href="{{url('my_post')}}">My Post</a></li>
 
 
                      {{-- <li><a href="{{route('home')}}">Home </a></li> --}}
