@@ -12,3 +12,12 @@ Package for laravel sweet alert:
           > composer require realrashid/sweet-alert
 
           > sail artisan sweetalert:publish 
+
+
+
+
+inside controller we do use like this,
+
+  /* Alert::info('Congrats', 'You have added  the data  Successfully');
+        Alert::warning('Congrats', 'You have added  the data  Successfully');
+        */

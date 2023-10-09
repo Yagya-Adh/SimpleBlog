@@ -6,6 +6,9 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Alert;
+
+
 class HomeController extends Controller
 {
 
@@ -82,6 +85,15 @@ class HomeController extends Controller
         $post->post_status = 'pending';
 
         $post->save();
+
+        // sweet-alert 
+
+
+
+        Alert::success('Congrats', 'You have added  the data  Successfully');
+
+
+
         return redirect()->back();
     }
 }
