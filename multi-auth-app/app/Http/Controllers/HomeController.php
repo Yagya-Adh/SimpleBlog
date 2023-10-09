@@ -49,4 +49,39 @@ class HomeController extends Controller
 
         return view('home.post_details', compact('post'));
     }
+
+
+    public function  create_post()
+    {
+        return view('home.create_post');
+    }
+
+
+    public function user_post(Request $request)
+    {
+        //logged user
+        $user = Auth()->user();
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->description = $request->description;
+
+        //image
+        $image = $request->image;
+        if ($image) {
+            $imagename = time() . '.' . $image->getClientOriginalExtension();
+            $request->image->move('postimage', $imagename);
+            $post->image = $imagename;
+        }
+
+        //logged in user
+        $post->user_id = $user->id;
+        $post->usertype = $user->usertype;
+        $post->name = $user->name;
+
+        $post->post_status = 'pending';
+
+        $post->save();
+        return redirect()->back();
+    }
 }

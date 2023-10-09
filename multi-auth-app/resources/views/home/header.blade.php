@@ -44,6 +44,10 @@
                     </x-app-layout>
                     </li>
 
+
+                     <li><a href="{{url('create_post')}}">Create Post</a></li>
+
+
                      {{-- <li><a href="{{route('home')}}">Home </a></li> --}}
                      @else
                      
