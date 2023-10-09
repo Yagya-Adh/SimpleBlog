@@ -72,7 +72,7 @@
 
              <div class="field_deg">
                  
-                <input class="btn btn-secondary " type="submit" value="Add Post">
+                <input class="btn btn-primary " type="submit" value="Add Post">
             </div>
         </form>
       </div>
